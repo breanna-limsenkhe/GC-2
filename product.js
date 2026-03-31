@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', function() {
             // Retrieve cart from localStorage or initialize
+            // Essentially this saves the stuff. 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             // Get selected size/variation if present
             let selectedOption = '';

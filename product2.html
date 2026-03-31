@@ -19,8 +19,11 @@
             <option value="large">Large (8x9 inches)</option>
         </select>
         <div>
-            <label for="qty">Quantity:</label>
+            <label for="mf_qty">Quantity:</label>
+            <button type="button" id="decrease-qty">-</button>
             <input type="number" name="quantity" id="mf_qty" value="1" min="1">
+            <button type="button" id="increase-qty">+</button>
+            <p id="quantity-error" hidden>Quantity must be 1 or more.</p>
         </div>
         <button id="add-to-cart">Add to Cart</button>
         <div style="margin-top:20px;">
@@ -41,6 +44,53 @@
     };
     </script>
     <script src="product.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const qtyInput = document.getElementById('mf_qty');
+        const decreaseBtn = document.getElementById('decrease-qty');
+        const increaseBtn = document.getElementById('increase-qty');
+        const addToCartBtn = document.getElementById('add-to-cart');
+        const errorMessage = document.getElementById('quantity-error');
+
+        function validateQuantity() {
+            const qty = parseInt(qtyInput.value, 10);
+
+            if (isNaN(qty) || qty < 1) {
+                errorMessage.hidden = false;
+                return false;
+            }
+
+            errorMessage.hidden = true;
+            return true;
+        }
+
+        decreaseBtn.addEventListener('click', function () {
+            const currentQty = parseInt(qtyInput.value, 10) || 1;
+            if (currentQty > 1) {
+                qtyInput.value = currentQty - 1;
+            }
+            validateQuantity();
+        });
+
+        increaseBtn.addEventListener('click', function () {
+            const currentQty = parseInt(qtyInput.value, 10) || 1;
+            qtyInput.value = currentQty + 1;
+            validateQuantity();
+        });
+
+        qtyInput.addEventListener('input', validateQuantity);
+
+        addToCartBtn.addEventListener('click', function (event) {
+            if (!validateQuantity()) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                alert('Quantity must be 1 or more.');
+            }
+        }, true);
+    });
+    </script>
+    
+
 <footer>
     <section class="catchline">
         <p>Your one and only <br>3D printing solution <br>in ADMU!</p>
