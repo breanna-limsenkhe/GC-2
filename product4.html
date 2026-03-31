@@ -8,8 +8,15 @@
 </head>
 <body>
     <div class="product-container">
+
+        <div class="product-left">
+            <img id="product-image" src="product images/PT/pt_1.jpg" alt="Pet Tags" style="max-width:300px;">
+        </div>
+
+
+
+        <div class="product-right">
         <h1 id="product-name">Pet Tags</h1>
-        <img id="product-image" src="product images/PT/pt_1.jpg" alt="Pet Tags" style="max-width:300px;">
         <p id="product-description">Durable 3D printed pet tags. Available in multiple sizes.</p>
         <div class="product-price" id="product-price">1200 PHP</div>
         <label for="size">Choose Size:</label>
@@ -24,16 +31,34 @@
             <input type="number" name="quantity" id="mf_qty" value="1" min="1">
             <button type="button" id="increase-qty">+</button>
             <p id="quantity-error" hidden>Quantity must be 1 or more.</p>
-        </div>
+
+
+                <!-- Color -->
+                         <div>
+                        <label for="color">Choose Color:</label>
+                        <select name="color" id="pt_color">
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>   
+                            <option value="pink">Pink</option>  
+                        </select>
+                        </div>
+
+                        <!-- File upload -->
+                         <div>
+                        <label for="text">Text Input:</label>
+                        <input type="text" id="pt_text" name="text" placeholder="Enter pet's name and contact info">
+                        </div>
+        
         <button id="add-to-cart">Add to Cart</button>
-        <div style="margin-top:20px;">
-            <img class="p_details-img" src="product images/PT/pt_1.jpg" alt="Sample Image 1" width="200px">
-            <img class="p_details-img" src="product images/PT/pt_2.jpg" alt="Sample Image 2" width="200px">
-            <img class="p_details-img" src="product images/PT/pt_3.jpg" alt="Sample Image 3" width="200px">
+
+
+
         </div>
-        <div style="margin-top:20px;">
-            <a href="catalogue.html">Back to Catalogue</a>
-        </div>
+    </div>
+        
     </div>
     <script>
     window.productData = {
@@ -89,27 +114,8 @@
         }, true);
     });
     </script>
-                         
-                        <!-- Color -->
-                         <div>
-                        <label for="color">Choose Color:</label>
-                        <select name="color" id="pt_color">
-                            <option value="black">Black</option>
-                            <option value="white">White</option>
-                            <option value="red">Red</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>   
-                            <option value="pink">Pink</option>  
-                        </select>
-                        </div>
 
-                        <!-- File upload -->
-                         <div>
-                        <label for="text">Text Input:</label>
-                        <input type="text" id="pt_text" name="text" placeholder="Enter pet's name and contact info">
-                        </div>
 
-                     </form>
                 </section>
             <p>A durable and lightweight pet tag personalized with your pet’s name and contact information for safety and identification.</p>
         </div>
