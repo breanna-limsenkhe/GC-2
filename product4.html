@@ -8,54 +8,61 @@
 </head>
 <body>
     <div class="product-container">
-
+        
+        <!-- Product Image Section -->
         <div class="product-left">
             <img id="product-image" src="product images/PT/pt_1.jpg" alt="Pet Tags" style="max-width:300px;">
         </div>
 
-
-
+        <!-- Product Details Section -->
         <div class="product-right">
-        <h1 id="product-name">Pet Tags</h1>
-        <p id="product-description">Durable 3D printed pet tags. Available in multiple sizes.</p>
-        <div class="product-price" id="product-price">1200 PHP</div>
-        <label for="size">Choose Size:</label>
-        <select name="size" id="pt_size">
-            <option value="small">Small (1.5 inches)</option>
-            <option value="medium">Medium (2 inches)</option>
-            <option value="large">Large (2.5 inches)</option>
-        </select>
-        <div>
-            <label for="mf_qty">Quantity:</label>
-            <button type="button" id="decrease-qty">-</button>
-            <input type="number" name="quantity" id="mf_qty" value="1" min="1">
-            <button type="button" id="increase-qty">+</button>
-            <p id="quantity-error" hidden>Quantity must be 1 or more.</p>
+            <h1 id="product-name">Pet Tags</h1>
+            <p id="product-description">Durable 3D printed pet tags. Available in multiple sizes.</p>
+            
+            <div class="product-price" id="product-price">1200 PHP</div>
+            
+            <!-- Size Selector -->
+            <label for="product-option">Choose Size:</label>
+            <select name="option" id="product-option">
+                <option value="Small (1.5 inches)">Small (1.5 inches)</option>
+                <option value="Medium (2 inches)">Medium (2 inches)</option>
+                <option value="Large (2.5 inches)">Large (2.5 inches)</option>
+            </select>
 
+            <!-- Quantity Selector -->
+            <div>
+                <label for="product-qty">Quantity:</label>
+                <button type="button" id="decrease-qty">-</button>
+                <input type="number" name="quantity" id="product-qty" value="1" min="1">
+                <button type="button" id="increase-qty">+</button>
+                <p id="quantity-error" hidden>Quantity must be 1 or more.</p>
+            </div>
 
-                <!-- Color -->
-                         <div>
-                        <label for="color">Choose Color:</label>
-                        <select name="color" id="pt_color">
-                            <option value="black">Black</option>
-                            <option value="white">White</option>
-                            <option value="red">Red</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>   
-                            <option value="pink">Pink</option>  
-                        </select>
-                        </div>
+            <!-- Color Selector -->
+            <div>
+                <label for="product-color">Choose Color:</label>
+                <select name="color" id="product-color">
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Pink">Pink</option>
+                </select>
+            </div>
 
-                        <!-- File upload -->
-                         <div>
-                        <label for="text">Text Input:</label>
-                        <input type="text" id="pt_text" name="text" placeholder="Enter pet's name and contact info">
-                        </div>
-        
-        <button id="add-to-cart">Add to Cart</button>
+            <!-- Text Input -->
+            <div>
+                <label for="product-text">Text Input:</label>
+                <input type="text" id="product-text" name="text" placeholder="Enter pet's name and contact info">
+            </div>
 
-
-
+            <button id="add-to-cart">Add to Cart</button>
+            
+            <!-- Back to Catalogue Link -->
+            <div style="margin-top:20px;">
+                <a href="catalogue.html">Back to Catalogue</a>
+            </div>
         </div>
     </div>
         
@@ -71,7 +78,7 @@
     <script src="product.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const qtyInput = document.getElementById('mf_qty');
+        const qtyInput = document.getElementById('product-qty');
         const decreaseBtn = document.getElementById('decrease-qty');
         const increaseBtn = document.getElementById('increase-qty');
         const addToCartBtn = document.getElementById('add-to-cart');
@@ -114,26 +121,5 @@
         }, true);
     });
     </script>
-
-
-                </section>
-            <p>A durable and lightweight pet tag personalized with your pet’s name and contact information for safety and identification.</p>
-        </div>
-    </body>
-<footer>
-    <section class="catchline">
-        <p>Your one and only <br>3D printing solution <br>in ADMU!</p>
-        <nav class="nav-footer">
-            <a href=index.html>Home</a>
-            <a href=catalogue.html>Products</a>
-            <a href=cart.html>Cart</a>
-            <a href=checkout.html>Checkout</a>
-        </nav>
-    </section>
-    <section class="find-us">
-        <p>Located at Ateneo de Manila University, <br> Katipunan Ave, Loyola Heights, Quezon City, 1108 Metro Manila</p>
-        <p>Contact us through 3dprintADMU@xmail.com</p>
-        <p>&copy;2026 Triforma PH</p>
-    </section>
-</footer>
+</body>
 </html>
