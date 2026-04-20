@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="product-title">Pet Tags - Triforma PH</title>
+    <link rel="stylesheet" href="styles.css"><!-- Optional: your CSS file -->
+</head>
+<body>
+    <div class="product-container">
+        
+        <!-- Product Image Section -->
+        <div class="carousel">
+            <img src="product images/PT/pt_1.jpg" alt="Pet Tags" >
+            <img src="product images/PT/pt_2.jpg" alt="Sample Image 1">
+            <img src="product images/PT/pt_3.jpg" alt="Sample Image 2">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-right">
+            <h1 id="product-name">Pet Tags</h1>
+            <p id="product-description">Durable 3D printed pet tags. Available in multiple sizes.</p>
+            
+            <div class="product-price" id="product-price">1200 PHP</div>
+            
+            <!-- Size Selector -->
+            <label for="product-option">Choose Size:</label>
+            <select name="option" id="product-option">
+                <option value="Small (1.5 inches)">Small (1.5 inches)</option>
+                <option value="Medium (2 inches)">Medium (2 inches)</option>
+                <option value="Large (2.5 inches)">Large (2.5 inches)</option>
+            </select>
+
+            <!-- Quantity Selector -->
+            <div>
+                <label for="product-qty">Quantity:</label>
+                <button type="button" id="decrease-qty">-</button>
+                <input type="number" name="quantity" id="product-qty" value="1" min="1">
+                <button type="button" id="increase-qty">+</button>
+                <p id="quantity-error" hidden>Quantity must be 1 or more.</p>
+            </div>
+
+            <!-- Color Selector -->
+            <div>
+                <label for="product-color">Choose Color:</label>
+                <select name="color" id="product-color">
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Pink">Pink</option>
+                </select>
+            </div>
+
+            <!-- Text Input -->
+            <div>
+                <label for="product-text">Text Input:</label>
+                <input type="text" id="product-text" name="text" placeholder="Enter pet's name and contact info">
+            </div>
+
+            <button id="add-to-cart">Add to Cart</button>
+            
+            <!-- Back to Catalogue Link -->
+            <div style="margin-top:20px;">
+                <a href="catalogue.html">Back to Catalogue</a>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    <script>
+    window.productData = {
+        title: "3D Pet Tags - Triforma PH",
+        image: "product images/PT/pt_1.jpg",
+        description: "Durable 3D printed pet tags. Available in multiple sizes.",
+        price: "1200 PHP"
+    };
+    </script>
+    <script src="product.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const qtyInput = document.getElementById('product-qty');
+        const decreaseBtn = document.getElementById('decrease-qty');
+        const increaseBtn = document.getElementById('increase-qty');
+        const addToCartBtn = document.getElementById('add-to-cart');
+        const errorMessage = document.getElementById('quantity-error');
+
+        function validateQuantity() {
+            const qty = parseInt(qtyInput.value, 10);
+
+            if (isNaN(qty) || qty < 1) {
+                errorMessage.hidden = false;
+                return false;
+            }
+
+            errorMessage.hidden = true;
+            return true;
+        }
+
+        decreaseBtn.addEventListener('click', function () {
+            const currentQty = parseInt(qtyInput.value, 10) || 1;
+            if (currentQty > 1) {
+                qtyInput.value = currentQty - 1;
+            }
+            validateQuantity();
+        });
+
+        increaseBtn.addEventListener('click', function () {
+            const currentQty = parseInt(qtyInput.value, 10) || 1;
+            qtyInput.value = currentQty + 1;
+            validateQuantity();
+        });
+
+        qtyInput.addEventListener('input', validateQuantity);
+
+        addToCartBtn.addEventListener('click', function (event) {
+            if (!validateQuantity()) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                alert('Quantity must be 1 or more.');
+            }
+        }, true);
+    });
+    </script>
+</body>
+</html>
